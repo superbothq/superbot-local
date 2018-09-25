@@ -8,13 +8,35 @@ RSpec.describe Superbot::CLI::Local::RunCommand do
       FileUtils.rm_r superbot_test_path if Dir.exist? superbot_test_path
     end
 
-    it do
-      superbot "new", superbot_test_path
-      expect(Superbot::Capybara::Runner).to receive(:run).with("visit \"http://example.com\"\n")
+    context "run test" do
+      around do |example|
+        FileUtils.rm_r superbot_test_path if Dir.exist? superbot_test_path
+        example.call
+        FileUtils.rm_r superbot_test_path if Dir.exist? superbot_test_path
+      end
 
-      command = described_class.new(superbot_test_path)
-      command.path = superbot_test_path
-      command.execute
+      context "when valid test script" do
+        it "successfully runs capybara tests" do
+          superbot("new", superbot_test_path).run
+          File.open(File.join(superbot_test_path, 'main.rb'), 'a') do |file|
+            file.write "page.driver.browser.close\n"
+          end
+          @k = superbot_local "run", superbot_test_path
+          expect(@k.out).to include("Test succeed")
+        end
+      end
+
+      context "when invalid test script" do
+        it "returns an error message" do
+          superbot("new", superbot_test_path).run
+          File.open(File.join(superbot_test_path, 'main.rb'), 'a') do |file|
+            file.truncate(0)
+            file.write "invalid script"
+          end
+          @k = superbot_local "run", superbot_test_path
+          expect(@k.out).to include("Test failed")
+        end
+      end
     end
   end
 end
