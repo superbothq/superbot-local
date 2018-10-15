@@ -6,12 +6,12 @@ require "superbot/local/version"
 Gem::Specification.new do |spec|
   spec.name          = "superbot-local"
   spec.version       = Superbot::Local::VERSION
-  spec.authors       = ["DeeMak13"]
-  spec.email         = ["dima.m@active-bridge.com"]
+  spec.authors       = ["Superbots"]
+  spec.email         = [""]
 
   spec.summary       = %q{Superbot local gem extention}
   spec.description   = %q{Run your superbot test scripts locally}
-  spec.homepage      = "https://github.com/DeeMak13/superbot-local"
+  spec.homepage      = "https://github.com/superbothq/superbot-local"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
@@ -31,9 +31,9 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "superbot"
+  spec.add_runtime_dependency "superbot", "~> 0.1.2"
+  spec.add_runtime_dependency "superbot-capybara", "~> 360.0", ">= 360.0.0"
 
-  spec.add_development_dependency "superbot-capybara"
   spec.add_development_dependency "kommando", "~> 0.1"
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"

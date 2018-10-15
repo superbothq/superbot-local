@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-`superbot local run mytest/`
+`superbot local run mytest`
 
 ## Development
 
