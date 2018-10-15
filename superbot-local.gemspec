@@ -12,6 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Superbot local gem extention}
   spec.description   = %q{Run your superbot test scripts locally}
   spec.homepage      = "https://github.com/superbothq/superbot-local"
+  spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
