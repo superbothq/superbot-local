@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+set -e
+
+VERSION=$(exe/superbot-local version)
+GEM_FILE="superbot-local-$VERSION.gem"
+
+gem uninstall -a -x superbot-local
+
+[ -e "$GEM_FILE" ] && rm "$GEM_FILE"
+
+gem build superbot-local
+gem install superbot-local-$VERSION.gem
+VERSION_INSTALLED=$(superbot-local version)
+
+if [ "$VERSION" != "$VERSION_INSTALLED" ]; then
+  echo "!version"
+  exit 1
+fi
+
+superbot-local
+
+echo "ok"
