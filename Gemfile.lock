@@ -1,8 +1,9 @@
 PATH
   remote: .
   specs:
-    superbot-local (0.1.0)
-      superbot
+    superbot-local (0.1.1)
+      superbot (~> 0.1.3)
+      superbot-capybara (~> 360.0, >= 360.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -36,7 +37,7 @@ GEM
     mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     mustermann (1.0.3)
-    nokogiri (1.8.4)
+    nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     parallel (1.12.1)
     parser (2.5.1.2)
@@ -82,12 +83,11 @@ GEM
       rack-protection (= 2.0.3)
       tilt (~> 2.0)
     sinatra-silent (0.0.1)
-    superbot (0.1.1)
+    superbot (0.1.3)
       clamp (= 1.2.1)
       launchy (= 2.4.3)
       sinatra (= 2.0.3)
       sinatra-silent (= 0.0.1)
-      superbot-capybara
       zaru (= 0.2.0)
     superbot-capybara (360.0.0)
       capybara (= 3.6.0)
@@ -98,7 +98,7 @@ GEM
       selenium-webdriver (= 3.14.0)
     tilt (2.0.8)
     unicode-display_width (1.4.0)
-    xpath (3.1.0)
+    xpath (3.2.0)
       nokogiri (~> 1.8)
     zaru (0.2.0)
 
@@ -111,7 +111,6 @@ DEPENDENCIES
   rake (~> 10.0)
   rspec (~> 3.0)
   rubocop (~> 0.53)
-  superbot-capybara
   superbot-local!
 
 BUNDLED WITH
