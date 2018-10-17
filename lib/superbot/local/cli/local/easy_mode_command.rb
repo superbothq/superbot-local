@@ -18,6 +18,7 @@ module Superbot
 
           $stdin.gets
 
+          web.capybara_runner.kill_session
           close_step_editor
         end
 

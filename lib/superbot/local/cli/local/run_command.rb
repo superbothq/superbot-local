@@ -12,7 +12,17 @@ module Superbot
 
         def execute
           script = File.read(File.join(path, 'main.rb'))
-          Superbot::Capybara::Runner.run(script)
+          Superbot::Capybara::Runner.new.tap do |runner|
+            runner.run(script)
+
+            loop do
+              break if runner.finished
+
+              sleep 0.001
+            end
+
+            runner.kill_session
+          end
         end
       end
     end
