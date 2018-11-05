@@ -1,25 +1,23 @@
 # frozen_string_literal: true
 
 require 'selenium-webdriver'
+require 'superbot/cli/teleport_command'
 
 module Superbot
   module CLI
     module Local
       class EasyModeCommand < Clamp::Command
         def execute
-          web = Superbot::Web.new(webdriver_endpoint: Superbot.webdriver_endpoint('local'))
-          web.run_async_after_running!
-
-          puts "🤖 active"
-          puts ""
-          puts "Press ENTER to exit"
-
           open_step_editor
+          open_teleport
+
+          puts "Press ENTER to exit"
 
           $stdin.gets
 
-          web.capybara_runner.kill_session
+        ensure
           close_step_editor
+          close_teleport
         end
 
         private
@@ -33,6 +31,16 @@ module Superbot
 
         def close_step_editor
           @step_editor.quit
+        end
+
+        def open_teleport
+          @teleport = Thread.new do
+            Superbot::CLI::TeleportCommand.run(nil, [], context)
+          end
+        end
+
+        def close_teleport
+          @teleport.kill
         end
       end
     end
