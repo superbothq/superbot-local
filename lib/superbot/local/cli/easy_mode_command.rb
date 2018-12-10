@@ -9,8 +9,9 @@ module Superbot
         def execute
           puts "Press [control+c] to exit"
           open_step_editor
-          run_converter
-          Superbot::Web.run!(webdriver_type: 'local')
+          chromedriver_path = Chromedriver::Helper.new.binary_path
+          @chromedriver = Kommando.run_async "#{chromedriver_path} --silent --port=9515 --url-base=/wd/hub"
+          @web = Superbot::Web.run!(webdriver_type: 'local')
         ensure
           close_step_editor
         end
@@ -25,13 +26,9 @@ module Superbot
         end
 
         def close_step_editor
-          @step_editor&.quit
           @chromedriver&.kill
-        end
-
-        def run_converter
-          chromedriver_path = Chromedriver::Helper.new.binary_path
-          @chromedriver = Kommando.run_async "#{chromedriver_path} --silent --port=9515 --url-base=wd/hub"
+          @step_editor&.quit
+          @web&.quit!
         end
       end
     end

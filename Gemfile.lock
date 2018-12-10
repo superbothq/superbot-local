@@ -1,8 +1,16 @@
 PATH
+  remote: ../superbot-capybara
+  specs:
+    superbot-capybara (1.0.2)
+      capybara (= 3.12.0)
+      cjsonci (= 0.2.0)
+      superbot-selenium-webdriver (= 1.0.1)
+
+PATH
   remote: .
   specs:
     superbot-local (0.1.4)
-      superbot (~> 0.1.28)
+      superbot (~> 0.1.29)
       superbot-capybara (~> 1.0.2)
 
 GEM
@@ -90,20 +98,16 @@ GEM
       rack-protection (= 2.0.4)
       tilt (~> 2.0)
     sinatra-silent (0.0.1)
-    superbot (0.1.28)
+    superbot (0.1.29)
       clamp (= 1.2.1)
       kommando (~> 0.1)
       launchy (= 2.4.3)
-      selenium-webdriver (~> 3.14, >= 3.14.0)
       sinatra (= 2.0.4)
       sinatra-silent (= 0.0.1)
       superbot-cloud (~> 0.1.19)
-      superbot-teleport (~> 0.2.1)
+      superbot-selenium-webdriver (~> 1.0.1)
+      superbot-teleport (~> 0.2.2)
       zaru (= 0.2.0)
-    superbot-capybara (1.0.2)
-      capybara (= 3.12.0)
-      cjsonci (= 0.2.0)
-      superbot-selenium-webdriver (= 1.0.1)
     superbot-cloud (0.1.19)
       marcel (= 0.3.3)
       multipart-post (= 2.0.0)
@@ -126,6 +130,7 @@ DEPENDENCIES
   rake (~> 10.0)
   rspec (~> 3.0)
   rubocop (~> 0.53)
+  superbot-capybara!
   superbot-local!
 
 BUNDLED WITH

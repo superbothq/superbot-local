@@ -32,7 +32,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "superbot", "~> 0.1.28"
+  spec.add_runtime_dependency "superbot", "~> 0.1.29"
   spec.add_runtime_dependency "superbot-capybara", "~> 1.0.2"
 
   spec.add_development_dependency "bundler", "~> 1.16"
