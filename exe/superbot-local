@@ -11,4 +11,4 @@ STDOUT.sync = true
 require 'superbot'
 require 'superbot/local'
 
-Superbot::CLI::LocalCommand.run
+Superbot::Local::CLI::RootCommand.run
